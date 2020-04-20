@@ -1,0 +1,91 @@
+html, body {
+    font-family: 'Product Sans';
+    font-size: 16px;
+    word-spacing: 1px;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: border-box;
+    margin: 0;
+}
+.noselection {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+@font-face {
+    font-family: 'Product Sans';
+    src: url('/fonts/ProductSans-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Product Sans Medium';
+    src: url('/fonts/ProductSans-Medium.ttf');
+}
+@font-face {
+    font-family: 'Product Sans Light';
+    src: url('/fonts/ProductSans-Light.ttf');
+}
+@font-face {
+    font-family: 'Pacifico';
+    src: url('/fonts/Pacifico.ttf');
+}
+.container {
+    display: flex;
+}
+.container.justify-space-between {
+    justify-content: space-between;
+}
+.spacer {
+    flex-grow: 1 !important;
+}
+.divider {
+    border-top: 1px solid #e3e3e3;
+    margin: 12px 0 12px 0;
+}
+
+.wrapper {
+    margin: 0 auto;
+    position: relative;
+    width: 684px;
+    max-width: 100%;
+}
+@media only screen and (min-width: 1100px) {
+    .wrapper {
+        width: 915px;
+    }
+}
+@media only screen and (min-width: 1400px) {
+    .wrapper {
+        width: 1140px;
+    }
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: transparent; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: hsla(0, 0%, 53.3%, .4); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: hsla(0, 0%, 53.3%, .4); 
+}
