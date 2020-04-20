@@ -1,4 +1,4 @@
-# [projectname]
+# Volunity
 
 ![Markdown Linter](https://github.com/vives-projectweek-1-2020/projectweek-1-team-1/workflows/Markdown%20Linter/badge.svg?branch=master)
 ![GitHub](https://img.shields.io/github/license/vives-projectweek-1-2020/projectweek-1-team-1)
