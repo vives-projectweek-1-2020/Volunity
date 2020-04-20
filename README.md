@@ -1,9 +1,11 @@
 # Volunity
 
-![Markdown Linter](https://github.com/vives-projectweek-1-2020/projectweek-1-team-1/workflows/Markdown%20Linter/badge.svg?branch=master)
-![GitHub](https://img.shields.io/github/license/vives-projectweek-1-2020/projectweek-1-team-1)
-![GitHub top language](https://img.shields.io/github/languages/top/vives-projectweek-1-2020/projectweek-1-team-1)
-![GitHub All Releases](https://img.shields.io/github/downloads/vives-projectweek-1-2020/projectweek-1-team-1/total)
+![Markdown Linter](https://github.com/vives-projectweek-1-2020/Volunity/workflows/Markdown%20Linter/badge.svg?branch=master)
+![GitHub](https://img.shields.io/github/license/vives-projectweek-1-2020/Volunity)
+![GitHub top language](https://img.shields.io/github/languages/top/vives-projectweek-1-2020/Volunity)
+![GitHub All Releases](https://img.shields.io/github/downloads/vives-projectweek-1-2020/Volunity/total)
+
+[logo]: https://github.com/vives-projectweek-1-2020/Volunity/raw/master/src/docs/img/volunity.png "logo"
 
 ...
 
