@@ -1,14 +1,47 @@
 const express = require('express')
 const app = express()
+const mysql = require('mysql')
 
-app.get('/', (req, res) => {
-    return res.json({
-        success: true,
-        results: [
-            { username: 'user1' },
-            { username: 'user2' },
-            { username: 'user3' },
-        ]
+let connection = mysql.createConnection({
+  host: 'home.trikthom.com',
+  user: 'volunity',
+  password: 'Wy2WNgrtKfLddEDY',
+  database: 'volunity'
+})
+
+const apicall = (query) => {
+    return new Promise((resolve, reject) => {
+        if (query.trim().length == 0) return reject()
+
+        try {
+            connection = mysql.createConnection(connection.config);
+            connection.connect()
+
+            connection.query(query, function (err, rows, fields) {
+                if (err) throw err
+                
+                console.log(rows[0])
+    
+                const result = rows[0] != undefined ? {
+                    success: true,
+                    results: rows,
+                } : {
+                    success: false, results: null
+                }
+    
+                resolve(result)
+            })
+    
+            connection.end()
+        } catch(e) {
+            console.log(e)
+        }
+    })
+}
+
+app.get('/users', (req, res) => {
+    apicall('SELECT * FROM users').then(result => {
+        return res.json(result)
     })
 })
 
