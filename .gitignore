@@ -1,4 +1,4 @@
-website/node_modules/
+node_modules/
 website/.nuxt/
 .vscode
 yarn.lock
