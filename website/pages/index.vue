@@ -15,25 +15,25 @@
         </nav>
         <div class="content">
             <p style="white-space: pre-line;">
-                Volunity is a platform to help the vulnerable people in the community by doing the shopping for them
-                This way the people in need don't have to go outside and risk getting infected in het supermarket for example.
+                Volunity is a platform to help the vulnerable in the community by doing the groceries for them.
+                This way the people at risk don't have to go outside and risk getting exposed to COVID-19 when going out for food.
 
-                Become a volunteer sign-up NOW!
+                Become a volunteer and sign-up NOW!
             </p>
         </div>
         <div id="concept">
             <h1>CONCEPT</h1>
             <hr>
-            <p>On this platform there are 2 groups, the volunteers and the vulnerable(clients)</p>
+            <p>On this platform there are 2 groups, the volunteers and the vulnerable at risks.</p>
             <p style="white-space: pre-line;">
-                Volunteers are people who are willing to go shopping.
+                Volunteers are people who want to go shopping in their spare time to help out the community.
 
-                The clients are people who are not mobile/risicogroup to go shopping,
-                because of COVID-19 it would be fatal for some of them if they got infected.
+                The clients are people who are vulnerable to the current crisis or aren't as mobile as they used to be.
+                Because of COVID-19 this could be catastrophic for this high risk group.
             </p>
             <p style="white-space: pre-line;">
-                Volunity needs volunteers to go grocery shopping for the vulnerable.
-                You can contribute to our purpose by volunteering, just click the sign-up button.
+                Volunity needs volunteers and we need any help we can get, so we can diminish the effects of this crisis together.
+                You can contribute to our purpose by volunteering, just click the sign-up button!
                 There you can make an account as volunteer or as client.
                 As client you can put a shopping request on our site for a volunteer to complete,
                 this request can only consist out of a shopping list.
@@ -43,7 +43,7 @@
             <h1>ABOUT</h1>
             <hr>
             <p style="white-space: pre-line;">
-                We are student from Vives Brugge who want to tackle a problem that this crisis
+                We are students from Vives Brugge who want to tackle a problem that this crisis
                 brings upon us. We are developing this platform for our project week.
             </p>
         </div>
