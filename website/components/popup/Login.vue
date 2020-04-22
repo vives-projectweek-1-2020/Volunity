@@ -19,6 +19,7 @@
                     </tr>
                     <tr>
                         <td>Password</td>
+
                         <td>
                             <input
                                 v-model="password"
