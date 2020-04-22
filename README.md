@@ -3,6 +3,7 @@
 ![logo](https://github.com/vives-projectweek-1-2020/Volunity/raw/master/docs/img/volunity_long.png)
 
 ![Markdown Linter](https://github.com/vives-projectweek-1-2020/Volunity/workflows/Markdown%20Linter/badge.svg?branch=master)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/17c3cbef-49ff-4ef3-954b-12a4db7b8013/deploy-status)](https://app.netlify.com/sites/volunity-be/deploys)
 ![GitHub](https://img.shields.io/github/license/vives-projectweek-1-2020/Volunity)
 ![GitHub top language](https://img.shields.io/github/languages/top/vives-projectweek-1-2020/Volunity)
 ![GitHub All Releases](https://img.shields.io/github/downloads/vives-projectweek-1-2020/Volunity/total)
