@@ -77,6 +77,7 @@
                 <option>kilogram</option>
                 <option>gram</option>
             </select>
+            <button @click="deleteitem(item.id)">delete</button>
         </div>
         <button @click="add()">
             Add item
@@ -99,8 +100,13 @@ export default {
 
     methods: {
         add() {
-            this.items.push({brand: '', name: '', quantity: '', maxprice: '', id: '2'})
+            this.items.push({brand: '', name: '', quantity: '', maxprice: '', id: Math.random()})
         },
+        deleteitem(id){
+            this.items=this.items.filter(item=>{
+                return item.id!=id
+            })
+        }
 
     },
 
