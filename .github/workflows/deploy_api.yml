@@ -19,11 +19,14 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: Install SSH key
-        uses: shimataro/ssh-key-action@v2
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: deploy api
+        uses: wlixcc/SFTP-Deploy-Action@v1.0
         with:
-          key: ${{ secrets.SSH_KEY_PI }}
-          name: id_rsa # optional
-          known_hosts: ${{ secrets.KNOWN_HOSTS }}
-      - name: rsync over ssh
-        run: rsync -avz -e "ssh -p $${{ secrets.PI_PORT }}" ${{ secrets.PI_USERNAME }}@${{ secrets.PI_HOST }}:/home/thomasc/volunity/api/ ./api/
+          username: ${{ secrets.PI_USERNAME }}'
+          server: ${{ secrets.PI_HOST }}
+          private_key: ${{ secrets.SSH_KEY_PI }} 
+          local_path: './api/*'
+          remote_path: '/home/thomasc/volunity/api/' #make sure dir exist
+          args: '-o ConnectTimeout=5'
