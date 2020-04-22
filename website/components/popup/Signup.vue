@@ -11,35 +11,75 @@
                     <tbody>
                         <tr>
                             <td>Name</td>
-                            <td><input type="text"></td>
+                            <td>
+                                <input
+                                    v-model="user.firstname"
+                                    type="text"
+                                >
+                            </td>
                         </tr>
                         <tr>
                             <td>Last Name</td>
-                            <td><input type="text"></td>
+                            <td>
+                                <input
+                                    v-model="user.lastname"
+                                    type="text"
+                                >
+                            </td>
                         </tr>
                         <tr>
                             <td>E-Mail</td>
-                            <td><input type="text"></td>
+                            <td>
+                                <input
+                                    v-model="user.email"
+                                    type="text"
+                                >
+                            </td>
                         </tr>
                         <tr>
                             <td>Password</td>
-                            <td><input type="text"></td>
+                            <td>
+                                <input
+                                    v-model="user.password"
+                                    type="password"
+                                >
+                            </td>
                         </tr>
                         <tr>
                             <td>Street</td>
-                            <td><input type="text"></td>
+                            <td>
+                                <input
+                                    v-model="user.street"
+                                    type="text"
+                                >
+                            </td>
                             <td style="margin:40px">
                                 N°
                             </td>
-                            <td><input type="text"></td>
+                            <td>
+                                <input
+                                    v-model="user.nr"
+                                    type="text"
+                                >
+                            </td>
                         </tr>
                         <tr>
                             <td>City</td>
-                            <td><input type="text"></td>
+                            <td>
+                                <input
+                                    v-model="user.city"
+                                    type="text"
+                                >
+                            </td>
                         </tr>
                         <tr>
                             <td>Postal Code</td>
-                            <td><input type="text"></td>
+                            <td>
+                                <input
+                                    v-model="user.postalcode"
+                                    type="text"
+                                >
+                            </td>
                         </tr>
                     </tbody>
                     <t-checkbox
@@ -54,7 +94,7 @@
                 </t-button>
                 <t-button
                     outline
-                    @click="add"
+                    @click="signup"
                 >
                     Sign Up
                 </t-button>
@@ -64,6 +104,8 @@
 </template>
 
 <script>
+/* eslint-disable no-console */
+
 export default {
 
     props: {
@@ -78,13 +120,17 @@ export default {
     data() {
         return {
             accept: false,
+            user: {},
         }
     },
 
     methods: {
 
-        add() {
-            this.close()
+        signup() {
+            this.$store.dispatch('auth/signup', this.user).then((data) => {
+                console.log(data)
+                this.close()
+            })
         },
 
         close() {
