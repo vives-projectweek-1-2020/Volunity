@@ -4,7 +4,8 @@
             <Header />
 
             <div class="app-content">
-                <nuxt />
+                <NotLoggedIn v-if="!$store.getters['auth/isAuthenticated']" />
+                <nuxt v-else />
             </div>
 
             <Footer />
@@ -19,12 +20,14 @@
 <script>
 import Header from '~/components/Header'
 import Footer from '~/components/Footer'
+import NotLoggedIn from '~/components/NotLoggedIn'
 
 export default {
 
     components: {
         Header,
         Footer,
+        NotLoggedIn,
     },
 
     data() {
