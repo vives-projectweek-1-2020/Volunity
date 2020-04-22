@@ -14,7 +14,7 @@
                     </tr>
                     <tr>
                         <td>Password</td>
-                        <td><input type="text"></td>
+                        <td><input type="password"></td>
                     </tr>
                 </table>
             </t-card-content>

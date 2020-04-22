@@ -23,7 +23,7 @@
                         </tr>
                         <tr>
                             <td>Password</td>
-                            <td><input type="text"></td>
+                            <td><input type="password"></td>
                         </tr>
                         <tr>
                             <td>Street</td>
@@ -38,8 +38,15 @@
                             <td><input type="text"></td>
                         </tr>
                         <tr>
-                            <td>Postal Code</td>
+                            <td>Postal Codes</td>
                             <td><input type="text"></td>
+                        </tr>
+                        <tr>
+                            <td>Please choose who you are</td>
+                            <td> <select v-model="type">
+                            <option>Volunteer</option>
+                            <option>Vulnerable</option>
+                    </select></td>
                         </tr>
                     </tbody>
                     <t-checkbox
@@ -78,6 +85,7 @@ export default {
     data() {
         return {
             accept: false,
+            type: "",
         }
     },
 
