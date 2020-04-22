@@ -43,10 +43,12 @@
                         </tr>
                         <tr>
                             <td>Please choose who you are</td>
-                            <td> <select v-model="type">
-                            <option>Volunteer</option>
-                            <option>Vulnerable</option>
-                    </select></td>
+                            <td>
+                                <select v-model="type">
+                                    <option>Volunteer</option>
+                                    <option>Vulnerable</option>
+                                </select>
+                            </td>
                         </tr>
                     </tbody>
                     <t-checkbox
@@ -85,7 +87,7 @@ export default {
     data() {
         return {
             accept: false,
-            type: "",
+            type: '',
         }
     },
 
