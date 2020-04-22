@@ -1,67 +1,104 @@
 <template>
-    <div class="wrapper">
-        <nav>
-            <ul>
-                <li @click="scrollTo('concept')">
-                    Concept
-                </li>
-                <li @click="scrollTo('about')">
-                    About
-                </li>
-                <li @click="scrollTo('contact')">
-                    Contact
-                </li>
-            </ul>
-        </nav>
-        <div class="content">
-            <p style="white-space: pre-line;">
-                Volunity is a platform to help the vulnerable people in the community by doing the shopping for them
-                This way the people in need don't have to go outside and risk getting infected in het supermarket for example.
+    <div>
+        <SignupPopup
+            v-if="popup.signup"
+            :value.sync="popup.signup"
+            class="popup"
+        />
+        <LoginPopup
+            v-if="popup.login"
+            :value.sync="popup.login"
+            class="popup"
+        />
+        <div class="wrapper">
+            <nav>
+                <ul>
+                    <li @click="scrollTo('concept')">
+                        Concept
+                    </li>
+                    <li @click="scrollTo('about')">
+                        About
+                    </li>
+                    <li @click="scrollTo('contact')">
+                        Contact
+                    </li>
+                </ul>
+            </nav>
+            <div class="content">
+                <p style="white-space: pre-line;">
+                    Volunity is a platform to help the vulnerable in the community by doing the groceries for them.
+                    This way the people at risk don't have to go outside and risk getting exposed to COVID-19 when going out for food.
 
-                Become a volunteer sign-up NOW!
-            </p>
-        </div>
-        <div id="concept">
-            <h1>CONCEPT</h1>
-            <hr>
-            <p>On this platform there are 2 groups, the volunteers and the vulnerable(clients)</p>
-            <p style="white-space: pre-line;">
-                Volunteers are people who are willing to go shopping.
+                    Become a volunteer and sign-up NOW!
+                </p>
+                <div class="signup-login">
+                    <t-button @click="signup()">
+                        signup
+                    </t-button>
+                    <t-button @click="login()">
+                        login
+                    </t-button>
+                </div>
+            </div>
+            <div id="concept">
+                <h1>CONCEPT</h1>
+                <hr>
+                <p>On this platform there are 2 groups, the volunteers and the vulnerable at risks.</p>
+                <p style="white-space: pre-line;">
+                    Volunteers are people who want to go shopping in their spare time to help out the community.
 
-                The clients are people who are not mobile/risicogroup to go shopping,
-                because of COVID-19 it would be fatal for some of them if they got infected.
-            </p>
-            <p style="white-space: pre-line;">
-                Volunity needs volunteers to go grocery shopping for the vulnerable.
-                You can contribute to our purpose by volunteering, just click the sign-up button.
-                There you can make an account as volunteer or as client.
-                As client you can put a shopping request on our site for a volunteer to complete,
-                this request can only consist out of a shopping list.
-            </p>
-        </div>
-        <div id="about">
-            <h1>ABOUT</h1>
-            <hr>
-            <p style="white-space: pre-line;">
-                We are student from Vives Brugge who want to tackle a problem that this crisis
-                brings upon us. We are developing this platform for our project week.
-            </p>
-        </div>
-        <div id="contact">
-            <h1>CONTACT</h1>
-            <hr>
-            <p style="margin-bottom:20px;">
-                <strong>Email</strong>: info@volunity.be
-            </p>
-            <span><strong>Address</strong>: Spoorwegstraat 12</span><br>
-            <span style="margin-left:70px;">8000 Brugge</span><br>
-            <span style="margin-left:70px;">Campus KULeuven</span>
+                    The clients are people who are vulnerable to the current crisis or aren't as mobile as they used to be.
+                    Because of COVID-19 this could be catastrophic for this high risk group.
+                </p>
+                <p style="white-space: pre-line;">
+                    Volunity needs volunteers and we need any help we can get, so we can diminish the effects of this crisis together.
+                    You can contribute to our purpose by volunteering, just click the sign-up button!
+                    There you can make an account as volunteer or as client.
+                    As client you can put a shopping request on our site for a volunteer to complete,
+                    this request can only consist out of a shopping list.
+                </p>
+            </div>
+            <div id="about">
+                <h1>ABOUT</h1>
+                <hr>
+                <p style="white-space: pre-line;">
+                    We are students from Vives Brugge who want to tackle a problem that this crisis
+                    brings upon us. We are developing this platform for our project week.
+                </p>
+            </div>
+            <div id="contact">
+                <h1>CONTACT</h1>
+                <hr>
+                <p style="margin-bottom:20px;">
+                    <strong>Email</strong>: info@volunity.be
+                </p>
+                <span><strong>Address</strong>: Spoorwegstraat 12</span><br>
+                <span style="margin-left:70px;">8000 Brugge</span><br>
+                <span style="margin-left:70px;">Campus KULeuven</span>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+import SignupPopup from '~/components/popup/Signup'
+import LoginPopup from '~/components/popup/Login'
+
 export default {
+
+    components: {
+        LoginPopup,
+        SignupPopup,
+    },
+
+    data() {
+        return {
+            popup: {
+                signup: false,
+                login: false,
+            },
+        }
+    },
 
     methods: {
 
@@ -70,12 +107,37 @@ export default {
             elmnt.scrollIntoView({ behavior: 'smooth' })
         },
 
+        signup() {
+            this.popup.signup = true
+            this.popup.login = false
+        },
+
+        login() {
+            this.popup.signup = false
+            this.popup.login = true
+        },
+
     },
 
 }
 </script>
 
 <style scoped>
+.popups {
+    position: fixed;
+    /* background-color: rgba(0, 0, 0, .15); */
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.popup {
+    /* border-radius: 5px; */
+    /* background-color: white; */
+    /* padding: 20px; */
+}
 hr {
     margin-bottom: 20px;
     border: none;
@@ -105,5 +167,15 @@ ul li {
     text-transform: uppercase;
     font-family: 'Product Sans Medium';
     cursor: pointer;
+}
+.signup-login {
+    display: flex;
+    margin-top: 20px;
+}
+.signup-login .t-btn {
+    margin-left: 20px;
+}
+.signup-login .t-btn:first-child {
+    margin-left: 0px;
 }
 </style>

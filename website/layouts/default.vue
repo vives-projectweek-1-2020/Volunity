@@ -1,5 +1,5 @@
 <template>
-    <div class="app">
+    <div class="app theme--green">
         <div v-if="loaded">
             <Header />
 
