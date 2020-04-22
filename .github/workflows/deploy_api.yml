@@ -24,5 +24,6 @@ jobs:
         with:
           key: ${{ secrets.SSH_KEY_PI }}
           name: id_rsa # optional
+          known_hosts: ""
       - name: rsync over ssh
         run: rsync -avz -e "ssh -p $${{ secrets.PI_PORT }}" ${{ secrets.PI_USERNAME }}@${{ secrets.PI_HOST }}:/home/thomasc/volunity/api/ ./api/
