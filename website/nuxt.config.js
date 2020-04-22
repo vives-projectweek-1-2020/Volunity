@@ -44,6 +44,7 @@ const settings = {
     */
     plugins: [
         '~/plugins/i18n',
+        '~/plugins/components',
     ],
     router: {
         middleware: ['i18n'],
