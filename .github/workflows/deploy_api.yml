@@ -19,18 +19,10 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    - name: SFTP Deploy
-      uses: wlixcc/SFTP-Deploy-Action@v1.0
-      with:
-        # username
-        username: ${{ secrets.PI_USERNAME }}
-        # your sftp server
-        server: ${{ secrets.PI_HOST }}
-        # your sftp server port, default to 22
-        port: ${{ secrets.PI_PORT }}
-        # you can copy private_key from your *.pem file, keep format
-        ssh_private_key: ${{ secrets.SSH_KEY_PI }}
-        # will put all file under this path
-        local_path: ./api/*
-        # files will copy to under remote_path
-        remote_path: /home/thomasc/volunity/api/
+      - name: Install SSH key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_KEY_PI }}
+          name: id_rsa # optional
+      - name: rsync over ssh
+        run: rsync -avz -e "ssh -p $${{ secrets.PI_PORT }}" ${{ secrets.PI_USERNAME }}@${{ secrets.PI_HOST }}:/home/thomasc/volunity/api/ ./api/
