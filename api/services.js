@@ -39,7 +39,8 @@ router.post('/signup', async (req, res) => {
     }
     apicall(`INSERT INTO users (firstname, lastname, email, street, number, city, postal_code, password)  
             VALUES ('${user.firstname}', '${user.lastname}', '${user.email}', '${user.street}', '${user.nr}', '${user.city}', '${user.postalcode}', MD5('${user.password}'))`).then(result => {
-                const key = jwt.sign({user}, process.env.AUTH_SECRET || 'secret')
+                user = user.filter(key => key != 'password')
+		const key = jwt.sign({user}, process.env.AUTH_SECRET || 'secret')
                 return res.json({key})
             }).catch(() => {
                 return res.json({
