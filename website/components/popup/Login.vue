@@ -10,11 +10,22 @@
                 <table>
                     <tr>
                         <td>E-mail</td>
-                        <td><input type="text"></td>
+                        <td>
+                            <input
+                                v-model="email"
+                                type="text"
+                            >
+                        </td>
                     </tr>
                     <tr>
                         <td>Password</td>
-                        <td><input type="password"></td>
+
+                        <td>
+                            <input
+                                v-model="password"
+                                type="password"
+                            >
+                        </td>
                     </tr>
                 </table>
             </t-card-content>
@@ -34,6 +45,8 @@
 </template>
 
 <script>
+/* eslint-disable no-console */
+
 export default {
 
     props: {
@@ -45,10 +58,26 @@ export default {
 
     },
 
+    data() {
+        return {
+            email: '',
+            password: '',
+        }
+    },
+
     methods: {
 
         add() {
-            this.close()
+            this.$store.dispatch('auth/login', {
+                email: this.email,
+                password: this.password,
+            }).then((data) => {
+                console.log(data)
+                this.close()
+            }).catch((reason) => {
+                console.log(reason)
+                console.log('User Not Found')
+            })
         },
 
         close() {
