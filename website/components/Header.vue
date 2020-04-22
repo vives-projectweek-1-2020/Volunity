@@ -1,17 +1,40 @@
 <template>
     <header class="container justify-space-between">
         <div class="wrapper">
-            <div class="header-title noselection">
-                <div
-                    class="header-title-img"
-                    @click="$router.push('/')"
-                />
+            <div class="flex">
+                <div class="header-title noselection">
+                    <div
+                        class="header-title-img"
+                        @click="$router.push('/')"
+                    />
+                </div>
+                <t-button
+                    v-if="$store.getters['auth/isAuthenticated']"
+                    @click="logout()"
+                >
+                    logout
+                </t-button>
             </div>
         </div>
     </header>
 </template>
 
-<style>
+<script>
+export default {
+
+    methods: {
+
+        logout() {
+            this.$store.dispatch('auth/logout')
+        },
+
+    },
+
+}
+</script>
+
+
+<style scoped>
 header {
     height: 64px;
     width: 100%;
@@ -36,5 +59,9 @@ header {
     background-position: center;
     background-size: 175px;
     cursor: pointer;
+}
+.flex {
+    display: flex;
+    justify-content: space-between;
 }
 </style>

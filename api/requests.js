@@ -11,8 +11,7 @@ let connection = mysql.createConnection({
 })
 
 router.get('/orders/:id', (req, res) => {
-    
-    apicall(`SELECT * FROM orders WHERE user_id_order = ${req.params.id}`).then(result => {
+    apicall(`SELECT * FROM orders WHERE id = ${req.params.id}`).then(result => {
     return res.json(result)
     })
 })
