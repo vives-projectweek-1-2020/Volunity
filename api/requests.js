@@ -17,6 +17,35 @@ router.get('/orders/:id', (req, res) => {
     })
 })
 
+router.post('/orders', (req, res) => {
+    const order = { 
+        minprice: req.body.minprice,
+        maxprice: req.body.maxprice,
+        storelocation: req.body.storelocation,
+        storename: req.body.storename,
+        endtime: req.body.endtime        
+    }
+
+    apicall(`INSERT INTO orders (min_price, max_price, store_location, store_name, end_time )
+             VALUES ('${order.minprice}','${order.maxprice}','${order.storelocation}','${order.storename}','${order.endtime}')`).then(result => {
+            console.log(result.results.insertId)
+               req.body.products.forEach(element => {
+                const orderlist = {
+                    orderid: result.results.insertId,
+                    brand: element.brand,
+                    item: element.item,
+                    quantity: element.quantity,
+                    maxprice: element.maxprice
+                }
+                apicall(`INSERT INTO order_list (order_id, brand, item, quantity, maxprice)
+                VALUES (${orderlist.orderid},'${orderlist.brand}','${orderlist.item}',${orderlist.quantity},${orderlist.maxprice})`)
+                
+                
+            });
+            return res.json(result)
+            })
+})
+
 router.post('/', (req, res) => {
     return res.send('Received a POST HTTP method');
 })
@@ -46,7 +75,7 @@ const apicall = (query) => {
                     success: true,
                     results: rows,
                 } : {
-                    success: false, results: null
+                    success: false, results: rows
                 }
     
                 resolve(result)
