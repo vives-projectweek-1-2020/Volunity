@@ -68,7 +68,7 @@ export const actions = {
     },
 
     async logout(context) {
-        document.cookie.split(';').forEach((c) => { document.cookie = c.replace(/^ +/, '').replace(/=.*/, `=;expires=${new Date().toUTCString()};path=/`) })
+        document.cookie.split(';').forEach((c) => { document.cookie = c.replace(/^ +/, '').replace(/=.*/, `=;expires=${new Date().toUTCString()};Domain=.${window.location.hostname.replace('www.', '')};path=/`) })
 
         context.commit('setAuthenticated', false)
     },
