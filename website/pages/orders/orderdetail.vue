@@ -1,30 +1,23 @@
 <template>
     <div class="wrapper">
-        <br>
         <h1>
-            Create your shopping list here
+            This is your order to complete
         </h1>
         <br>
-        <div class="maps">
-            <h2>Choose your shop : </h2>
-                <select v-model="shop">
-                <option
-                    disabled
-                    value=""
-                >
-                    Please choose the shop
-                </option>
-                <option>Colruyt</option>
-                <option>Carrefour</option>
-                <option>Delhaize</option>
-                <option>Aldi</option>
-                <option>Lidl</option>
-                <option>Spar</option>
-                <option>other</option>
-            </select>
+        <div class="maps">  
+            <h2>Please go to this shop</h2>
+            <div>
+                <input
+                 v-model="shoptype"
+                 placeholder="shoptype"
+                 >  
+            </div>
+            <div>
+                <h3>Rating : ok</h3>
+            </div>
         </div>
-        <h5>Only fill this is if you have chosen for "others"</h5>
-<div class="othershop">
+        <h5>if the shop is "others" please go to this adress</h5>
+        <div class="othershop">
             <input
                 v-model="shopname"
                 placeholder="Shopname"
@@ -45,11 +38,31 @@
                 v-model="postalcode"
                 placeholder="Postal Code"
             >
-
-</div>
+        </div>
+        <div class="deliveryadress">
+            <h2>Delivery adress!</h2>
+            <div class="adress">
+                <input
+                    v-model="streetname"
+                    placeholder="streetname"
+                >
+                <input
+                    v-model="NR"
+                    placeholder="nr"
+                >
+                <input
+                    v-model="city"
+                    placeholder="city"
+                >
+                <input
+                    v-model="postalcode"
+                    placeholder="Postal Code"
+                >
+            </div>
+        </div>
         <br>
         <div class="deliverydate">
-            <h3>Choose the delivery period : </h3>
+            <h3>Please complete the order within this time period : </h3>
             <span class="van">From</span><span class="tot">Till</span>
             <br>
             <input
@@ -66,6 +79,9 @@
                 data-date-format="DD MMMM YYYY"
                 value="2015-08-09"
             >
+        </div>
+        <div class="shoppinglist">
+            <h2>Shopping list :</h2>
         </div>
         <div
             v-for="item in items"
@@ -100,13 +116,8 @@
                 <option>kilogram</option>
                 <option>gram</option>
             </select>
-            <button @click="deleteitem(item.id)">delete</button>
         </div>
-        <button @click="add()">
-            Add item
-        </button>
-
-        <button>Submit order</button>
+        <button>Accept order</button>
     </div>
 </template>
 <script>
@@ -114,31 +125,17 @@
 export default {
     data() {
         return {
-            selected: '',shop: '',
+            selected: '',
             items: [
                 {brand: '', name: '', quantity: '', maxprice: '', id: '1'},
             ],
         }
     },
 
-    methods: {
-        add() {
-            this.items.push({brand: '', name: '', quantity: '', maxprice: '', id: Math.random()})
-        },
-        deleteitem(id){
-            this.items=this.items.filter(item=>{
-                return item.id!=id
-            })
-        }
-
-    },
-
 }
 </script>
 
 <style scoped>
-
-
 
 h1 {
     margin-top: 20px;
@@ -149,6 +146,12 @@ h1 {
     margin: 50px;
 
 }
+.maps h3{
+    margin-left: 200px;
+    padding: 20px;
+    border: 3px solid black;
+}
+
 .othershop input{
     border: 2px solid grey;
     
@@ -165,14 +168,11 @@ input,select,button{
 button:hover{
     background: green;
 }
-button{
+.deliverydate,.shoppinglist,.shoplist{
     margin: 10px;
 }
-.deliverydate{
-    margin: 10px;
-}
-.shoplist{
-    margin: 10px;
+.deliveryadress{
+    margin-top: 30px;
 }
 .van{
     margin-right: 160px;
