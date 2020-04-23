@@ -18,7 +18,7 @@ function checkToken(req) {
     return jwt.verify(token, process.env.AUTH_SECRET || 'secret', (err, decoded) => {
         if (err) return false
 
-        req.user = Object(decoded).user
+        req.user = Object(decoded)
 
         return true
     })
