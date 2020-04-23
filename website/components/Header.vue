@@ -39,7 +39,7 @@ header {
     height: 64px;
     width: 100%;
     display: flex;
-    background-color: #ffffff;
+    background-color: #B1FFF2;
     padding: 8px;
     align-items: center;
     position: fixed;
