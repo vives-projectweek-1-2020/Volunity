@@ -23,8 +23,8 @@
                 <option>other</option>
             </select>
         </div>
+        <div class="othershop" v-if="shop == 'other'">
         <h5>Only fill this is if you have chosen for "others"</h5>
-<div class="othershop">
             <input
                 v-model="shopname"
                 placeholder="Shopname"
@@ -45,7 +45,6 @@
                 v-model="postalcode"
                 placeholder="Postal Code"
             >
-
 </div>
         <br>
         <div class="deliverydate">
