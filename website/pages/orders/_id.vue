@@ -40,40 +40,12 @@
         <div class="shoppinglist">
             <h2>Shopping list :</h2>
         </div>
-        <div
-            v-for="item in order.products"
-            :key="item.id"
-            class="shoplist"
-        >
-            <input
-                v-model="item.brand"
-                placeholder="brand"
-            >
-            <input
-                v-model="item.name"
-                placeholder="item"
-            >
-            <input
-                v-model="item.quantity"
-                placeholder="quantity"
-            >
-            <input
-                v-model="item.maxprice"
-                placeholder="maxprice"
-            >
-            <select v-model="item.selected">
-                <option
-                    disabled
-                    value=""
-                >
-                    Please choose one
-                </option>
-                <option>pieces</option>
-                <option>liters</option>
-                <option>kilogram</option>
-                <option>gram</option>
-            </select>
-        </div>
+        <t-datatable
+            v-if="order.products"
+            checkbox
+            :headers="headers"
+            :items="order.products"
+        />
         <button>Accept order</button>
     </div>
 </template>
@@ -82,11 +54,39 @@ import { mapGetters } from 'vuex'
 
 export default {
 
+    data() {
+        return {
+            headers: [
+                {
+                    text: 'Item',
+                    value: 'item',
+                },
+                {
+                    text: 'Brand',
+                    value: 'brand',
+                },
+                {
+                    text: 'Quantity',
+                    value: 'quantity',
+                    right: true,
+                    width: '1px',
+                },
+                {
+                    text: 'Max price',
+                    value: 'maxprice',
+                    right: true,
+                    width: '1px',
+                },
+            ],
+        }
+    },
+
     computed: {
         ...mapGetters({
             order: 'api/order',
         }),
     },
+
 
     beforeMount() {
         this.$store.dispatch('api/order', this.$route.params.id)

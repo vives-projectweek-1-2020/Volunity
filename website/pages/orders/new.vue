@@ -84,7 +84,7 @@
                 placeholder="brand"
             >
             <input
-                v-model="item.name"
+                v-model="item.item"
                 placeholder="item"
             >
             <input
