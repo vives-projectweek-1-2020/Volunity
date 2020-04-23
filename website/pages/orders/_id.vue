@@ -5,8 +5,8 @@
         </h1>
         <br>
         <div class="maps">
-            <h2>Please go to this shop</h2>
-            <p>{{ order.store_name }}</p>
+            <p>Please go to this shop</p>
+            <h2>{{ order.store_name }}</h2>
             <div>
                 <h3>Rating : ok</h3>
             </div>
@@ -104,7 +104,10 @@ h1 {
 
 .maps{
     margin: 50px;
-
+    align-items: center;
+}
+.maps h2 {
+    margin-left: 20px;
 }
 .maps h3{
     margin-left: 200px;
