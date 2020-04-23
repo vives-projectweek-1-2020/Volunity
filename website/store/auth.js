@@ -41,7 +41,7 @@ export const actions = {
             axios.post(`${url}/signup`, user).then((response) => {
                 if (!response.data.key) return reject(response.data)
                 const maxAge = 60 * 60 * 24 * 7
-                const cookie = `_volunity_auth=${response.data.key};Max-Age=${maxAge};`
+                const cookie = `_volunity_auth=${response.data.key};Max-Age=${maxAge};Domain=.${window.location.hostname.replace('www.', '')};`
 
                 document.cookie = cookie
                 resolve(response.data.key)
@@ -56,7 +56,7 @@ export const actions = {
                 if (!response.data.key) return reject(response.data)
 
                 const maxAge = 60 * 60 * 24 * 7
-                const cookie = `_volunity_auth=${response.data.key};Max-Age=${maxAge};`
+                const cookie = `_volunity_auth=${response.data.key};Max-Age=${maxAge};Domain=.${window.location.hostname.replace('www.', '')};`
 
                 document.cookie = cookie
                 resolve(response.data.key)
