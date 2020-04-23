@@ -44,9 +44,10 @@ const settings = {
     */
     plugins: [
         '~/plugins/i18n',
+        '~/plugins/components',
     ],
     router: {
-        middleware: ['i18n'],
+        middleware: ['i18n', 'auth'],
     },
     /*
     ** Nuxt.js dev-modules

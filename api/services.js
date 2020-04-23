@@ -28,25 +28,32 @@ router.post('/users', (req, res) => {
 
 router.post('/signup', async (req, res) => {
     const user = {
-                        firstname: req.body.firstname, 
-                        lastname: req.body.lastname,
-                        email: req.body.email,
-                        street: req.body.street,
-                        nr: req.body.nr,
-                        city: req.body.city,
-                        postalcode: req.body.postalcode,
-                        password: req.body.password
+        firstname: req.body.firstname, 
+        lastname: req.body.lastname,
+        email: req.body.email,
+        street: req.body.street,
+        nr: req.body.nr,
+        city: req.body.city,
+        postalcode: req.body.postalcode,
+        password: req.body.password
     }
-    apicall(`INSERT INTO users (firstname, lastname, email, street, number, city, postal_code, password)  
-            VALUES ('${user.firstname}', '${user.lastname}', '${user.email}', '${user.street}', '${user.nr}', '${user.city}', '${user.postalcode}', MD5('${user.password}'))`).then(result => {
-                const key = jwt.sign({user}, process.env.AUTH_SECRET || 'secret')
-                return res.json({key})
-            }).catch(() => {
-                return res.json({
-                    success:false
-                })
-            })
-
+    apicall(`INSERT INTO users (firstname, lastname, email, street, number, city, postal_code, password) VALUES ('${user.firstname}', '${user.lastname}', '${user.email}', '${user.street}', '${user.nr}', '${user.city}', '${user.postalcode}', MD5('${user.password}'))`).then(result => {
+        
+        console.log(result)
+        const r = JSON.stringify({
+            id: result.results.insertId,
+            ...user
+        }, (key, val) => {
+            if (key != 'password') return val;
+        })
+        const key = jwt.sign(JSON.parse(r), process.env.AUTH_SECRET || 'secret')
+        return res.json({key})
+    }).catch((reason) => {
+        return res.json({
+            success: false,
+            reason
+        })
+    })
 
 })
 
@@ -56,8 +63,8 @@ router.post('/login', async (req, res) => {
     apicall(`SELECT *
              FROM users
              WHERE password = MD5('${user.password}') AND email = '${user.email}'`).then((result)=> {
-                 if (!result.success) return res.json(result)
-                 const r = JSON.stringify(result.results[0], (key, val) => {
+                if (!result.success) return res.json(result)
+                const r = JSON.stringify(result.results[0], (key, val) => {
                      if (key != 'password') return val;
                  })
                  const key = jwt.sign(JSON.parse(r), process.env.AUTH_SECRET || 'secret')
@@ -67,7 +74,7 @@ router.post('/login', async (req, res) => {
                     key
                  });
              }).catch((reason) => {
-                 return res.json5reason
+                 return res.json(reason)
              })
     
     
@@ -90,7 +97,7 @@ const apicall = (query) => {
                     success: true,
                     results: rows,
                 } : {
-                    success: false, results: null
+                    success: rows.affectedRows > 0, results: rows
                 }
     
                 resolve(result)
