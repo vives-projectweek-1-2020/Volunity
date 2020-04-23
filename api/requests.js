@@ -12,6 +12,16 @@ let connection = mysql.createConnection({
 
 router.get('/orders/:id', (req, res) => {
     apicall(`SELECT * FROM orders WHERE id = ${req.params.id}`).then(result => {
+        apicall(`SELECT * FROM order_list WHERE order_id = ${req.params.id}`).then(products => {
+            console.log(products.results)
+            if (result.success) result.results[0].products = products.results
+            return res.json(result)
+        })
+    })
+})
+
+router.get('/orders', (req, res) => {
+    apicall(`SELECT * FROM orders`).then(result => {
     return res.json(result)
     })
 })
@@ -30,6 +40,7 @@ router.post('/orders', (req, res) => {
              VALUES ('${order.minprice}','${order.maxprice}','${order.storelocation}','${order.storename}','${order.endtime}', ${order.user_id_order})`).then(result => {
             console.log(result.results.insertId)
                req.body.products.forEach(element => {
+                console.log(element)
                 const orderlist = {
                     orderid: result.results.insertId,
                     brand: element.brand,
@@ -44,18 +55,6 @@ router.post('/orders', (req, res) => {
             });
             return res.json(result)
             })
-})
-
-router.post('/', (req, res) => {
-    return res.send('Received a POST HTTP method');
-})
-
-router.put('/', (req, res) => {
-    return res.send('Received a PUT HTTP method');
-})
-
-router.delete('/', (req, res) => {
-    return res.send('Received a DELETE HTTP method');
 })
 
 const apicall = (query) => {
@@ -75,7 +74,7 @@ const apicall = (query) => {
                     success: true,
                     results: rows,
                 } : {
-                    success: false, results: rows
+                    success: rows.affectedRows > 0, results: rows
                 }
     
                 resolve(result)
