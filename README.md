@@ -6,17 +6,23 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/17c3cbef-49ff-4ef3-954b-12a4db7b8013/deploy-status)](https://app.netlify.com/sites/volunity-be/deploys)
 ![GitHub](https://img.shields.io/github/license/vives-projectweek-1-2020/Volunity)
 ![GitHub top language](https://img.shields.io/github/languages/top/vives-projectweek-1-2020/Volunity)
-![GitHub All Releases](https://img.shields.io/github/downloads/vives-projectweek-1-2020/Volunity/total)
 
-...
+Volunity is an open source platform to help the vulnerable in the community by doing the groceries for them.\
+This way the people at risk don't have to go outside and risk getting exposed to COVID-19 when going out for food.
 
-## Topic
+## The Concept
 
-...
+On this platform there are 2 groups, the volunteers and the vulnerable at risks.
 
-## Solution
+Volunteers are people who want to go shopping in their spare time to help out the community.
 
-...
+The vulnerable at risk are people who are vulnerable to the current crisis or aren't as mobile as they used to be. Because of COVID-19 this could be catastrophic for this high risk group.
+
+Volunity needs volunteers and we need any help we can get, so we can diminish the effects of this crisis together. You can contribute to our purpose by volunteering, just click the sign-up button! There you can make an account as volunteer or as vulnerable. As vulnerable you can put a shopping request on our site for a volunteer to complete, this request can only consist out of a shopping list.
+
+## About Us
+
+We are students from Vives Brugge who want to tackle a problem that this crisis brings upon us. We are developing this platform for our project week.
 
 ## Git Contributing Guide
 
