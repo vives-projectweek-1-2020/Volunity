@@ -31,7 +31,7 @@ export const actions = {
 
     async orders(context) {
         return new Promise((resolve, reject) => {
-            axios.get(`${url}/orders`).then((res) => {
+            axios.get(`${url}/orders`, {withCredentials: true}).then((res) => {
                 if (res.data.success) {
                     context.commit('setOrders', res.data.results)
                     resolve(res.data)
@@ -42,7 +42,7 @@ export const actions = {
 
     async order(context, orderId) {
         return new Promise((resolve, reject) => {
-            axios.get(`${url}/orders/${orderId}`).then((res) => {
+            axios.get(`${url}/orders/${orderId}`, {withCredentials: true}).then((res) => {
                 if (res.data.success) {
                     context.commit('setOrder', res.data.results[0])
                     resolve(res.data)
