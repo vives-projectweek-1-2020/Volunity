@@ -25,6 +25,10 @@ export const getters = {
         return store.orders
     },
 
+    order(store) {
+        return store.order
+    },
+
 }
 
 export const actions = {

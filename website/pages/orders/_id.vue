@@ -4,60 +4,17 @@
             This is your order to complete
         </h1>
         <br>
-        <div class="maps">  
+        <div class="maps">
             <h2>Please go to this shop</h2>
-            <div>
-                <input
-                 v-model="shoptype"
-                 placeholder="shoptype"
-                 >  
-            </div>
+            <p>{{ order.store_name }}</p>
             <div>
                 <h3>Rating : ok</h3>
             </div>
         </div>
-        <h5>if the shop is "others" please go to this adress</h5>
-        <div class="othershop">
-            <input
-                v-model="shopname"
-                placeholder="Shopname"
-            >
-            <input
-                v-model="streetname"
-                placeholder="streetname"
-            >
-            <input
-                v-model="NR"
-                placeholder="nr"
-            >
-            <input
-                v-model="city"
-                placeholder="city"
-            >
-            <input
-                v-model="postalcode"
-                placeholder="Postal Code"
-            >
-        </div>
         <div class="deliveryadress">
             <h2>Delivery adress!</h2>
             <div class="adress">
-                <input
-                    v-model="streetname"
-                    placeholder="streetname"
-                >
-                <input
-                    v-model="NR"
-                    placeholder="nr"
-                >
-                <input
-                    v-model="city"
-                    placeholder="city"
-                >
-                <input
-                    v-model="postalcode"
-                    placeholder="Postal Code"
-                >
+                {{ order.store_location || order.store_name }}
             </div>
         </div>
         <br>
@@ -67,24 +24,24 @@
             <br>
             <input
                 id="firstday"
+                v-model="order.start_time"
                 type="date"
                 data-date=""
                 data-date-format="DD MMMM YYYY"
-                value="2015-08-09"
             >
             <input
                 id="lastday"
+                v-model="order.end_time"
                 type="date"
                 data-date=""
                 data-date-format="DD MMMM YYYY"
-                value="2015-08-09"
             >
         </div>
         <div class="shoppinglist">
             <h2>Shopping list :</h2>
         </div>
         <div
-            v-for="item in items"
+            v-for="item in order.products"
             :key="item.id"
             class="shoplist"
         >
@@ -121,15 +78,18 @@
     </div>
 </template>
 <script>
+import { mapGetters } from 'vuex'
 
 export default {
-    data() {
-        return {
-            selected: '',
-            items: [
-                {brand: '', name: '', quantity: '', maxprice: '', id: '1'},
-            ],
-        }
+
+    computed: {
+        ...mapGetters({
+            order: 'api/order',
+        }),
+    },
+
+    beforeMount() {
+        this.$store.dispatch('api/order', this.$route.params.id)
     },
 
 }
@@ -139,7 +99,7 @@ export default {
 
 h1 {
     margin-top: 20px;
-    
+
 }
 
 .maps{
@@ -154,7 +114,7 @@ h1 {
 
 .othershop input{
     border: 2px solid grey;
-    
+
 }
 .maps{
     display: flex;
