@@ -84,7 +84,10 @@
                         <tr>
                             <td>Please choose who you are</td>
                             <td>
-                                <select v-model="type">
+                                <select
+                                    v-model="user.volunteer"
+                                    style="margin-left:20px;width: calc(100% - 20px);"
+                                >
                                     <option>Volunteer</option>
                                     <option>Vulnerable</option>
                                 </select>
