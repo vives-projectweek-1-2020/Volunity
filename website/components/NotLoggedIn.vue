@@ -49,15 +49,14 @@
                 <p style="white-space: pre-line;">
                     Volunteers are people who want to go shopping in their spare time to help out the community.
 
-                    The clients are people who are vulnerable to the current crisis or aren't as mobile as they used to be.
+                    The vulnerable at risk are people who are vulnerable to the current crisis or aren't as mobile as they used to be.
                     Because of COVID-19 this could be catastrophic for this high risk group.
                 </p>
                 <p style="white-space: pre-line;">
                     Volunity needs volunteers and we need any help we can get, so we can diminish the effects of this crisis together.
                     You can contribute to our purpose by volunteering, just click the sign-up button!
-                    There you can make an account as volunteer or as client.
-                    As client you can put a shopping request on our site for a volunteer to complete,
-                    this request can only consist out of a shopping list.
+                    There you can make an account as volunteer or as vulnerable.
+                    As vulnerable you can put a shopping request on our site for a volunteer to complete, this request can only consist out of a shopping list.
                 </p>
             </div>
             <div id="about">
@@ -71,12 +70,28 @@
             <div id="contact">
                 <h1>CONTACT</h1>
                 <hr>
-                <p style="margin-bottom:20px;">
-                    <strong>Email</strong>: info@volunity.be
-                </p>
-                <span><strong>Address</strong>: Spoorwegstraat 12</span><br>
-                <span style="margin-left:70px;">8000 Brugge</span><br>
-                <span style="margin-left:70px;">Campus KULeuven</span>
+                <table>
+                    <thead>
+                        <td />
+                        <td />
+                    </thead>
+                    <tr>
+                        <td><strong>Email</strong></td>
+                        <td>info@volunity.be</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Address</strong></td>
+                        <td>Spoorwegstraat 12</td>
+                    </tr>
+                    <tr>
+                        <td />
+                        <td>8000 Brugge</td>
+                    </tr>
+                    <tr>
+                        <td />
+                        <td>Campus KULeuven</td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
