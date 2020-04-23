@@ -24,6 +24,13 @@ Volunity needs volunteers and we need any help we can get, so we can diminish th
 
 We are students from Vives Brugge who want to tackle a problem that this crisis brings upon us. We are developing this platform for our project week.
 
+## Used Technologies
+
+- Website: Vue.js (Nuxt.js)
+- API: Express.js
+- Database: MySQL
+- Design: Adobe XD
+
 ## Git Contributing Guide
 
 **Please follow the instructions to keep the repo clean and merge conflict-free**
