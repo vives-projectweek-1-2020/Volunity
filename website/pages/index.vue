@@ -3,7 +3,7 @@
         <Orders />
         <t-button
             style="margin-top: 20px;"
-            @click="$router.push('/orders/submit')"
+            @click="$router.push('/orders/new')"
         >
             create new
         </t-button>

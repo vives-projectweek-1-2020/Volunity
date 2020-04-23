@@ -7,7 +7,7 @@
         <br>
         <div class="maps">
             <h2>Choose your shop : </h2>
-                <select v-model="shop">
+            <select v-model="storename">
                 <option
                     disabled
                     value=""
@@ -23,29 +23,33 @@
                 <option>other</option>
             </select>
         </div>
-        <div class="othershop" v-if="shop == 'other'">
-        <h5>Only fill this is if you have chosen for "others"</h5>
+        <div
+            v-if="storename == 'other'"
+            class="othershop"
+        >
             <input
-                v-model="shopname"
+                v-model="convert.storename"
                 placeholder="Shopname"
             >
             <input
-                v-model="streetname"
-                placeholder="streetname"
+                v-model="convert.streetname"
+                placeholder="Streetname"
             >
             <input
-                v-model="NR"
-                placeholder="nr"
+                v-model="convert.streetnumber"
+                placeholder="Nr"
+                type="number"
             >
             <input
-                v-model="city"
-                placeholder="city"
+                v-model="convert.city"
+                placeholder="City"
             >
             <input
-                v-model="postalcode"
+                v-model="convert.postalcode"
                 placeholder="Postal Code"
+                type="number"
             >
-</div>
+        </div>
         <br>
         <div class="deliverydate">
             <h3>Choose the delivery period : </h3>
@@ -53,15 +57,19 @@
             <br>
             <input
                 id="firstday"
+                v-model="order.starttime"
                 type="date"
                 data-date=""
+                placeholder="dd/mm/yyyy"
                 data-date-format="DD MMMM YYYY"
                 value="2015-08-09"
             >
             <input
                 id="lastday"
+                v-model="order.endtime"
                 type="date"
                 data-date=""
+                placeholder="dd/mm/yyyy"
                 data-date-format="DD MMMM YYYY"
                 value="2015-08-09"
             >
@@ -82,6 +90,7 @@
             <input
                 v-model="item.quantity"
                 placeholder="quantity"
+                type="number"
             >
             <input
                 v-model="item.maxprice"
@@ -99,13 +108,21 @@
                 <option>kilogram</option>
                 <option>gram</option>
             </select>
-            <button @click="deleteitem(item.id)">delete</button>
+            <button @click="deleteitem(item.id)">
+                delete
+            </button>
         </div>
-        <button @click="add()">
-            Add item
-        </button>
-
-        <button>Submit order</button>
+        <div style="display:flex;justify-content:flex-end;">
+            <t-button @click="add()">
+                Add Item
+            </t-button>
+            <t-button
+                style="margin-left:20px;"
+                @click="submit()"
+            >
+                Submit Order
+            </t-button>
+        </div>
     </div>
 </template>
 <script>
@@ -113,22 +130,49 @@
 export default {
     data() {
         return {
-            selected: '',shop: '',
+            storename: '',
+            convert: {},
+            order: {
+                products: [],
+            },
             items: [
-                {brand: '', name: '', quantity: '', maxprice: '', id: '1'},
+                {brand: '', name: '', quantity: 1, maxprice: '', id: 1},
             ],
         }
     },
 
     methods: {
-        add() {
-            this.items.push({brand: '', name: '', quantity: '', maxprice: '', id: Math.random()})
-        },
-        deleteitem(id){
-            this.items=this.items.filter(item=>{
-                return item.id!=id
+
+        submit() {
+            if (this.storename === 'other') {
+                this.order.storename = this.convert.storename
+                this.order.storelocation = `${this.convert.streetname} ${this.convert.streetnumber}, ${this.convert.city} ${this.convert.postalcode}`
+            } else {
+                this.order.storename = this.storename
+                this.order.storelocation = 'NULL'
+            }
+
+            this.order.minprice = 0
+            this.order.maxprice = 0
+
+            this.items.forEach((product) => {
+                this.order.products.push(product)
             })
-        }
+
+            this.$store.dispatch('api/addOrder', this.order).then((result) => {
+                this.$router.push('/')
+            })
+        },
+
+        add() {
+            this.items.push({brand: '', name: '', quantity: 1, maxprice: '', id: Math.random()})
+        },
+
+        deleteitem(id) {
+            this.items = this.items.filter((item) => {
+                return item.id !== id
+            })
+        },
 
     },
 
@@ -138,10 +182,9 @@ export default {
 <style scoped>
 
 
-
 h1 {
     margin-top: 20px;
-    
+
 }
 
 .maps{
@@ -150,7 +193,7 @@ h1 {
 }
 .othershop input{
     border: 2px solid grey;
-    
+
 }
 .maps{
     display: flex;

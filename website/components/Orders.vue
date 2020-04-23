@@ -8,7 +8,7 @@
                 v-for="order in orders"
                 :key="order.id"
                 class="order"
-                @click="$router.push({path: `/orders/${orders.id}`})"
+                @click="$router.push({path: `/orders/${order.id}`})"
             >
                 <p>City: {{ order.store_location }}</p>
                 <p>Shop: {{ order.store_name }}</p>

@@ -40,6 +40,15 @@ export const actions = {
         })
     },
 
+    async addOrder(context, order) {
+        return new Promise((resolve, reject) => {
+            axios.post(`${url}/orders`, order, {withCredentials: true}).then((res) => {
+                if (res.data.success) resolve()
+                else reject()
+            })
+        })
+    },
+
     async order(context, orderId) {
         return new Promise((resolve, reject) => {
             axios.get(`${url}/orders/${orderId}`, {withCredentials: true}).then((res) => {
