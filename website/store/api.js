@@ -9,7 +9,7 @@ export const state = () => ({
 
 export const mutations = {
 
-    setOders(store, orders) {
+    setOrders(store, orders) {
         store.orders = orders
     },
 
