@@ -35,9 +35,10 @@ router.post('/signup', async (req, res) => {
         nr: req.body.nr,
         city: req.body.city,
         postalcode: req.body.postalcode,
-        password: req.body.password
+        password: req.body.password,
+        volunteer: req.body.volunteer
     }
-    apicall(`INSERT INTO users (firstname, lastname, email, street, number, city, postal_code, password) VALUES ('${user.firstname}', '${user.lastname}', '${user.email}', '${user.street}', '${user.nr}', '${user.city}', '${user.postalcode}', MD5('${user.password}'))`).then(result => {
+    apicall(`INSERT INTO users (firstname, lastname, email, street, number, city, postal_code, password, volunteer) VALUES ('${user.firstname}', '${user.lastname}', '${user.email}', '${user.street}', '${user.nr}', '${user.city}', '${user.postalcode}', MD5('${user.password}'), ${user.volunteer})`).then(result => {
         
         console.log(result)
         const r = JSON.stringify({
