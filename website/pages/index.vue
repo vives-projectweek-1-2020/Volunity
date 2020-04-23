@@ -1,11 +1,9 @@
 <template>
     <div class="wrapper">
-        <p>logged in content page here</p>
-        <p>{{ $store.getters['auth/authData'] }}</p>
-        <Volunteer />
+        <Orders />
         <t-button
             style="margin-top: 20px;"
-            @click="$router.push('/orders/submit')"
+            @click="$router.push('/orders/new')"
         >
             create new
         </t-button>
@@ -13,12 +11,12 @@
 </template>
 
 <script>
-import Volunteer from '~/components/Volunteer'
+import Orders from '~/components/Orders'
 
 export default {
 
     components: {
-        Volunteer,
+        Orders,
     },
 
 }

@@ -9,7 +9,7 @@ export const state = () => ({
 
 export const mutations = {
 
-    setOders(store, orders) {
+    setOrders(store, orders) {
         store.orders = orders
     },
 
@@ -19,11 +19,23 @@ export const mutations = {
 
 }
 
+export const getters = {
+
+    orders(store) {
+        return store.orders
+    },
+
+    order(store) {
+        return store.order
+    },
+
+}
+
 export const actions = {
 
     async orders(context) {
         return new Promise((resolve, reject) => {
-            axios.get(`${url}/orders`).then((res) => {
+            axios.get(`${url}/orders`, {withCredentials: true}).then((res) => {
                 if (res.data.success) {
                     context.commit('setOrders', res.data.results)
                     resolve(res.data)
@@ -32,9 +44,18 @@ export const actions = {
         })
     },
 
+    async addOrder(context, order) {
+        return new Promise((resolve, reject) => {
+            axios.post(`${url}/orders`, order, {withCredentials: true}).then((res) => {
+                if (res.data.success) resolve()
+                else reject()
+            })
+        })
+    },
+
     async order(context, orderId) {
         return new Promise((resolve, reject) => {
-            axios.get(`${url}/orders/${orderId}`).then((res) => {
+            axios.get(`${url}/orders/${orderId}`, {withCredentials: true}).then((res) => {
                 if (res.data.success) {
                     context.commit('setOrder', res.data.results[0])
                     resolve(res.data)
