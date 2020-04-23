@@ -19,6 +19,14 @@ export const mutations = {
 
 }
 
+export const getters = {
+
+    orders(store) {
+        return store.orders
+    },
+
+}
+
 export const actions = {
 
     async orders(context) {
