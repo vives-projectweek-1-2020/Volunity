@@ -11,7 +11,6 @@ let connection = mysql.createConnection({
 })
 
 router.get('/orders/:id', (req, res) => {
-    console.log(req.user.id) // <- req.user = userdata
     apicall(`SELECT * FROM orders WHERE id = ${req.params.id}`).then(result => {
     return res.json(result)
     })
@@ -23,11 +22,12 @@ router.post('/orders', (req, res) => {
         maxprice: req.body.maxprice,
         storelocation: req.body.storelocation,
         storename: req.body.storename,
-        endtime: req.body.endtime        
+        endtime: req.body.endtime,
+        user_id_order: req.user.id        
     }
 
-    apicall(`INSERT INTO orders (min_price, max_price, store_location, store_name, end_time )
-             VALUES ('${order.minprice}','${order.maxprice}','${order.storelocation}','${order.storename}','${order.endtime}')`).then(result => {
+    apicall(`INSERT INTO orders (min_price, max_price, store_location, store_name, end_time, user_id_order )
+             VALUES ('${order.minprice}','${order.maxprice}','${order.storelocation}','${order.storename}','${order.endtime}', ${order.user_id_order})`).then(result => {
             console.log(result.results.insertId)
                req.body.products.forEach(element => {
                 const orderlist = {
