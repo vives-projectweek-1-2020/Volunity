@@ -7,7 +7,7 @@
         <div class="maps">
             <br>
             <h4>
-                Look for the adress of the shop you want to use.
+                Look for the address of the shop you want to use.
             </h4>
             <div class="mapouter">
                 <div class="gmap_canvas">
