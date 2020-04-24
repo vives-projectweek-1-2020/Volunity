@@ -159,10 +159,7 @@ export default {
 input {
     padding: 3px;
     margin: 0px 0px 0px 20px;
-    display:inline-block;
-    border-width: 2.5px;
     border-color: black;
-    border-radius: 4px;
 }
 
 tr {
