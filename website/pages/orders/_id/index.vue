@@ -3,39 +3,21 @@
         <h1>
             This is your order to complete
         </h1>
-        <br>
         <div class="maps">
-            <p>Please go to this shop</p>
-            <h2>{{ order.store_name }}</h2>
+            <p>Please go to this shop <strong>{{ order.store_name }}</strong></p>
             <div>
                 <h3>Rating : ok</h3>
             </div>
         </div>
         <div class="deliveryadress">
-            <h2>Delivery adress!</h2>
-            <div class="adress">
-                {{ order.store_location || order.store_name }}
-            </div>
+            <p>Delivery adress: <strong>{{ order.store_location == 'NULL' ? order.store_name : order.store_location }}</strong></p>
         </div>
-        <br>
         <div class="deliverydate">
-            <h3>Please complete the order within this time period : </h3>
-            <span class="van">From</span><span class="tot">Till</span>
-            <br>
-            <input
-                id="firstday"
-                v-model="order.start_time"
-                type="date"
-                data-date=""
-                data-date-format="DD MMMM YYYY"
-            >
-            <input
-                id="lastday"
-                v-model="order.end_time"
-                type="date"
-                data-date=""
-                data-date-format="DD MMMM YYYY"
-            >
+            <p>
+                Please complete the order within this time period:
+                <strong>{{ new Date(order.end_time).getDate() }}/{{ new Date(order.end_time).getMonth() }}/{{ new Date(order.end_time).getFullYear() }}</strong>
+                <strong>- {{ new Date(order.end_time).getDate() }}/{{ new Date(order.end_time).getMonth() }}/{{ new Date(order.end_time).getFullYear() }}</strong>
+            </p>
         </div>
         <div class="shoppinglist">
             <h2>Shopping list :</h2>
@@ -46,7 +28,14 @@
             :headers="headers"
             :items="order.products"
         />
-        <button>Accept order</button>
+        <div style="display:flex;justify-content:flex-end;">
+            <t-button
+                style="margin-top:20px;"
+                @click="$router.push({name: 'orders-id-shoppinglist', params: $route.params})"
+            >
+                Accept order
+            </t-button>
+        </div>
     </div>
 </template>
 <script>
@@ -103,7 +92,6 @@ h1 {
 }
 
 .maps{
-    margin: 50px;
     align-items: center;
 }
 .maps h2 {
@@ -121,6 +109,7 @@ h1 {
 }
 .maps{
     display: flex;
+    justify-content: space-between;
 }
 input,select,button{
     font-size: 15px;
@@ -131,8 +120,9 @@ input,select,button{
 button:hover{
     background: green;
 }
-.deliverydate,.shoppinglist,.shoplist{
-    margin: 10px;
+.shoppinglist {
+    margin-top: 50px;
+    margin-bottom: 10px;
 }
 .deliveryadress{
     margin-top: 30px;

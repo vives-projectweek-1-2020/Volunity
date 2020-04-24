@@ -80,12 +80,12 @@
             class="shoplist"
         >
             <input
-                v-model="item.brand"
-                placeholder="brand"
-            >
-            <input
                 v-model="item.item"
                 placeholder="item"
+            >
+            <input
+                v-model="item.brand"
+                placeholder="brand"
             >
             <input
                 v-model="item.quantity"
@@ -108,9 +108,13 @@
                 <option>kilogram</option>
                 <option>gram</option>
             </select>
-            <button @click="deleteitem(item.id)">
+            <div class="spacer" />
+            <t-button
+                outline
+                @click="deleteitem(item.id)"
+            >
                 delete
-            </button>
+            </t-button>
         </div>
         <div style="display:flex;justify-content:flex-end;">
             <t-button @click="add()">
@@ -188,21 +192,14 @@ h1 {
 }
 
 .maps{
-    margin: 50px;
-
-}
-.othershop input{
-    border: 2px solid grey;
-
+    display: flex;
+    justify-content: space-between;
 }
 .maps{
     display: flex;
 }
 input,select,button{
     font-size: 15px;
-    margin: 10px;
-    border: 2px solid black;
-    border-radius: 5px;
 }
 button:hover{
     background: green;
@@ -211,10 +208,16 @@ button{
     margin: 10px;
 }
 .deliverydate{
-    margin: 10px;
+    margin-top: 10px;
 }
 .shoplist{
-    margin: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+.shoplist input {
+    margin-right: 10px;
 }
 .van{
     margin-right: 160px;

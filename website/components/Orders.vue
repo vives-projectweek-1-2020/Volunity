@@ -10,10 +10,11 @@
                 class="order"
                 @click="$router.push({path: `/orders/${order.id}`})"
             >
-                <p>City: {{ order.store_location }}</p>
+                <p v-if="order.store_location != 'NULL'">
+                    City: {{ order.store_location }}
+                </p>
                 <p>Shop: {{ order.store_name }}</p>
-                <p>Number of items:</p>
-                <p>MaxDeliveryDate: {{ order.end_time }}</p>
+                <p>Date: {{ new Date(order.end_time).getDate() }}/{{ new Date(order.end_time).getMonth() }}/{{ new Date(order.end_time).getFullYear() }}</p>
             </div>
         </div>
     </div>
@@ -54,6 +55,7 @@ export default {
     border: 3px solid black;
     border-radius: 5px;
     padding: 10px;
+    cursor: pointer;
 }
 .order p {
     margin: 10px 0px;
