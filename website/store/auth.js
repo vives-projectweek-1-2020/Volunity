@@ -56,7 +56,8 @@ export const actions = {
                 if (!response.data.key) return reject(response.data)
 
                 const maxAge = 60 * 60 * 24 * 7
-                const cookie = `_volunity_auth=${response.data.key};Max-Age=${maxAge};${process.env.NODE_ENV}` == 'production' ? `Domain=.${window.location.hostname.replace('www.', '')};` : ''
+                console.log(process.env.NODE_ENV)
+                const cookie = process.env.NODE_ENV !== 'development' ? `_volunity_auth=${response.data.key};Max-Age=${maxAge};Domain=.${window.location.hostname.replace('www.', '')};` : `_volunity_auth=${response.data.key};Max-Age=${maxAge};`
 
                 document.cookie = cookie
                 resolve(response.data.key)
