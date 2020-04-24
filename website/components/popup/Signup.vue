@@ -94,11 +94,11 @@
                             </td>
                         </tr>
                     </tbody>
-                    <t-checkbox
-                        v-model="accept"
-                        label="I accept the policy"
-                    />
                 </table>
+                <t-checkbox
+                    v-model="accept"
+                    label="I accept the policy"
+                />
             </t-card-content>
             <t-card-buttons>
                 <t-button @click="close">
