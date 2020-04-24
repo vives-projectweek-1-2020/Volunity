@@ -24,6 +24,10 @@ Volunity needs volunteers and we need any help we can get, so we can diminish th
 
 We are students from Vives Brugge who want to tackle a problem that this crisis brings upon us. We are developing this platform for our project week.
 
+## Video
+
+We have made a short introduction movie: [Volunity](https://youtu.be/BxIU8espxtg)
+
 ## Used Technologies
 
 - Website: Vue.js (Nuxt.js)
